@@ -66,11 +66,9 @@ def stt_page():
     # 定义一个函数 whisper_online，用于在线调用 Whisper 模型进行语音转文字。
     def whisper_online(audio_file):
         # 使用 OpenAI 客户端调用 Whisper 模型，将音频文件转换为文本。
-        transcript = client.audio.translations.create(
+        transcript = client.audio.transcriptions.create(
             model="whisper-1",
-            file=audio_file,
-            response_format="text",
-            prompt="中文"
+            file=audio_file
         )
         # 返回转录文本
         return transcript
