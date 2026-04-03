@@ -45,3 +45,13 @@ Working directory：./chatbot-app
 * use_time：是否显示每次对话消耗的时间
 
 @copyRight by yuyun（2026.3.4上传）有需要联系微信：wchatyuyun
+
+
+<img width="1914" height="912" alt="2a7ab82a-77b7-4bf5-834b-824e6bd85ecb" src="https://github.com/user-attachments/assets/78c1c80a-9a62-4582-a903-98eff4687cb0" />
+
+<img width="1912" height="906" alt="173db727-0c1c-48ef-8fe9-4303bd03813c" src="https://github.com/user-attachments/assets/164ae145-feb3-4414-9443-5f4461d728ce" />
+
+<img width="1919" height="910" alt="image" src="https://github.com/user-attachments/assets/1ceaf718-2fba-48a0-b83e-4aa41575bf9d" />
+
+
+
