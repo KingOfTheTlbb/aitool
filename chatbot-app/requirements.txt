@@ -3,3 +3,4 @@ sqlalchemy
 streamlit==1.39.0
 tiktoken
 audio_recorder_streamlit==0.0.10
+dashscope
