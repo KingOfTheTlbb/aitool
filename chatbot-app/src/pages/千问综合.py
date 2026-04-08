@@ -6,7 +6,7 @@ import base64
 from io import BytesIO
 
 # 初始化DashScope
-dashscope.api_key = os.getenv('DASHSCOPE_API_KEY', 'sk-46c2dff09b054decb4014c93230587b0')
+dashscope.api_key = os.getenv('DASHSCOPE_API_KEY', 'sk-56c2dff09b054decb4014c93230587b0')
 
 
 def generate_text(prompt, model="qwen-plus"):

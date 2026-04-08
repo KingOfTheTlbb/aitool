@@ -15,9 +15,9 @@ def home():
         user_name = st.session_state.get('user_name', '')
 
     if user_name:
-        st.title(f"🏠欢迎 {user_name}进入🏠芸哥AI应用多模态智能体")
+        st.title(f"🏠欢迎 {user_name}进入🏠AI应用多模态智能体")
     else:
-        st.title("欢迎进入🏠芸哥AI应用多模态智能体")
+        st.title("欢迎进入🏠AI应用多模态智能体")
 
     if "base_url" not in st.session_state:
         st.session_state['base_url'] = os.getenv('OPENAI_BASE_URL')
@@ -32,9 +32,8 @@ def home():
     st.markdown(
         """
         **体验OpenAI多模态功能**
-        ## 使用说明
-        * 请在侧边栏填写`API Key`。
-        ---------------------------------------------------------
+        * 使用说明
+        * 使用请在侧边栏填写`BASE_URL`&`API Key`。
         """
     )
     st.markdown(
@@ -64,15 +63,27 @@ def home():
         """
     )
 
-    # 添加退出登录按钮
-    if st.button("\r退出登录", key="logout_button"):
-        # 清除会话状态
-        for key in st.session_state.keys():
-            del st.session_state[key]
-        # 重定向到登录页面
-        command = f"streamlit run 登录.py"
-        os.system(command)  # 或者使用 subprocess.run(command, shell=True)
-        sys.exit()
+    st.markdown(
+        """
+        ---------------------------------------------------------
+        * 使用体验上有疑问联系 wx：wchatyuyun 
+        * Copyright 2026 by yuyun。
+        ---------------------------------------------------------
+        """
+    )
+
+
+
+
+    # # 添加退出登录按钮
+    # if st.button("\r退出登录", key="logout_button"):
+    #     # 清除会话状态
+    #     for key in st.session_state.keys():
+    #         del st.session_state[key]
+    #     # 重定向到登录页面
+    #     command = f"streamlit run 登录.py"
+    #     os.system(command)  # 或者使用 subprocess.run(command, shell=True)
+    #     sys.exit()
 
 if __name__ == "__main__":
     home()

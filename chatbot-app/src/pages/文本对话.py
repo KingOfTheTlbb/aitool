@@ -9,7 +9,7 @@ from openai import OpenAI
 
 # 聊天页面
 def chat_page():
-    st.title("芸哥文本对话")
+    st.title("文本对话")
     # 初始化参数
     # 强制使用 openai-hk 地址
     base_url = "https://api.openai-hk.com/v1"
