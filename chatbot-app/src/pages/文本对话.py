@@ -118,15 +118,25 @@ def chat_page():
                         placeholder = st.empty()
                         streaming_text = ''
                         for chunk in response:
-                            # 如果流式传输结束，跳出循环
-                            if chunk.choices[0].finish_reason == 'stop':
-                                break
-                            # 获取当前块的内容
-                            chunk_text = chunk.choices[0].delta.content
-                            if chunk_text:
-                                # 累加当前块的内容并更新显示
-                                streaming_text += chunk_text
-                                placeholder.markdown(streaming_text)
+                            # 检查 chunk.choices 是否存在且非空
+                            if hasattr(chunk, 'choices') and chunk.choices:
+                                # 检查 choices 列表是否有元素
+                                if len(chunk.choices) > 0:
+                                    # 检查是否有 finish_reason 属性
+                                    if hasattr(chunk.choices[0], 'finish_reason') and chunk.choices[
+                                        0].finish_reason == 'stop':
+                                        break
+                                    # 获取当前块的内容
+                                    if hasattr(chunk.choices[0], 'delta') and hasattr(chunk.choices[0].delta,
+                                                                                      'content'):
+                                        chunk_text = chunk.choices[0].delta.content
+                                        if chunk_text:
+                                            # 累加当前块的内容并更新显示
+                                            streaming_text += chunk_text
+                                            placeholder.markdown(streaming_text)
+                            else:
+                                # 处理 choices 为空的情况
+                                continue
                         # 将流式传输的内容保存为最终消息
                         model_msg = streaming_text
                     else:
@@ -134,6 +144,7 @@ def chat_page():
                         model_msg = response.choices[0].message.content
                         # 显示回复内容
                         st.markdown(model_msg)
+
                     # 记录结束时间
                     end_time = time.time()
                     # 将助手的回复添加到聊天消息中
