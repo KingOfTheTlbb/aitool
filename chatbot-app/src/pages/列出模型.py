@@ -19,9 +19,15 @@ def list_models_page():
     if "api_key" not in st.session_state:
         st.session_state['api_key'] = os.getenv('OPENAI_API_KEY')
 
-    # 侧边栏输入
-    st.session_state.base_url = st.sidebar.text_input('Base URL', st.session_state.base_url)
-    st.session_state.api_key = st.sidebar.text_input('API Key', st.session_state.api_key, type='password')
+    # 检查配置是否存在
+    if not st.session_state.get('base_url') or not st.session_state.get('api_key'):
+        st.error("请先在首页设置 Base URL 和 API Key")
+        st.stop()
+
+    # 显示当前配置（只读）
+    st.sidebar.markdown("**当前配置：**")
+    st.sidebar.text(f"Base URL: {st.session_state.base_url}")
+    st.sidebar.text(f"API Key: {'*' * len(st.session_state.api_key) if st.session_state.api_key else '未设置'}")
 
     # 获取OpenAI客户端
     client = get_openai_client(st.session_state.base_url, st.session_state.api_key)

@@ -6,6 +6,30 @@ from openai import OpenAI
 import requests
 from io import BytesIO
 
+def ensure_chinese_font():
+    """确保中文字体存在，如果不存在则自动下载"""
+    font_dir = os.path.join(os.path.dirname(__file__), "fonts")
+    font_path = os.path.join(font_dir, "SourceHanSansSC-Regular.ttf")
+
+    if not os.path.exists(font_path):
+        try:
+            os.makedirs(font_dir, exist_ok=True)
+            st.info("正在下载中文字体文件，请稍候...")
+
+            # 下载思源黑体简体中文
+            font_url = "https://github.com/adobe-fonts/source-han-sans/raw/release/OTF/SimplifiedChinese/SourceHanSansSC-Regular.otf"
+            response = requests.get(font_url, timeout=30)
+            response.raise_for_status()
+
+            with open(font_path, 'wb') as f:
+                f.write(response.content)
+
+            st.success("✅ 中文字体下载完成！")
+        except Exception as e:
+            st.error(f"字体下载失败: {e}")
+            return False
+    return True
+
 @st.cache_resource
 def get_openai_client(url, api_key):
     '''
@@ -64,31 +88,38 @@ def generate_namecard(name, company, position, phone, email, image_size, bg_name
             # 1. 项目本地字体（推荐）
             os.path.join(os.path.dirname(__file__), "fonts", "SourceHanSansSC-Regular.ttf"),
             os.path.join(os.path.dirname(__file__), "fonts", "simhei.ttf"),
+            os.path.join(os.path.dirname(__file__), "fonts", "NotoSansCJK-Regular.ttc"),
 
-            # 2. Windows系统字体
+            # 2. 系统字体路径
+            "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+            "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc",
+            "/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf",
+
+            # 3. Windows系统字体
             "C:/Windows/Fonts/simhei.ttf",  # Windows黑体
             "C:/Windows/Fonts/msyh.ttc",  # Windows微软雅黑
             "C:/Windows/Fonts/simsun.ttc",  # Windows宋体
 
-            # 3. macOS系统字体
+            # 4. macOS系统字体
             "/System/Library/Fonts/PingFang.ttc",  # macOS苹方
             "/System/Library/Fonts/STHeiti Light.ttc",  # macOS黑体
             "/System/Library/Fonts/STHeiti Medium.ttc",
-
-            # 4. Linux系统字体
-            "/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf",
-            "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
         ]
 
         for font_path in font_paths:
             try:
                 if os.path.exists(font_path):
-                    return ImageFont.truetype(font_path, size)
+                    font = ImageFont.truetype(font_path, size)
+                    # 测试字体是否支持中文
+                    test_text = "测试"
+                    bbox = ImageDraw.Draw(Image.new('RGB', (1, 1))).textbbox((0, 0), test_text, font=font)
+                    if bbox[2] > bbox[0]:  # 如果有宽度，说明字体支持中文
+                        return font
             except:
                 continue
 
-        # 5. 如果所有中文字体都找不到，使用默认字体并警告
-        st.warning("⚠️ 未找到中文字体，中文可能显示为方框。请安装中文字体或提供字体文件。")
+        # 如果所有中文字体都找不到，使用默认字体并警告
+        st.warning("⚠️ 未找到中文字体，中文可能显示为方框。已自动下载思源黑体字体，如仍有问题请手动安装中文字体。")
         return ImageFont.load_default()
 
     # 使用中文字体加载函数
@@ -156,6 +187,10 @@ def generate_namecard(name, company, position, phone, email, image_size, bg_name
 
 # Streamlit界面
 st.set_page_config(page_title="智能名片生成器", layout="wide")
+
+# 确保中文字体存在
+ensure_chinese_font()
+
 st.title("🎨 智能名片定制")
 st.markdown("上传个人照片，填写信息，选择背景，一键生成专属名片。")
 

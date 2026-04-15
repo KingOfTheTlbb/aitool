@@ -1514,7 +1514,7 @@ with st.container():
                                     base_name = os.path.splitext(file.name)[0]
 
                                     # Save file to temporary location to avoid stream issues
-                                    temp_file_path = f"temp_{base_name}_{idx}.pdf"
+                                    temp_file_path = os.path.join(os.getcwd(), f"temp_{base_name}_{idx}.pdf")
                                     with open(temp_file_path, "wb") as temp_file:
                                         temp_file.write(file.getvalue())
 
