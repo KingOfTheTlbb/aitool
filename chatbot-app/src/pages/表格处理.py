@@ -16,7 +16,6 @@ import matplotlib.font_manager as fm
 LANGUAGES = {
     'en': {
         'app_title': 'Smart Excel Data Processing Tool',
-        'sidebar_header': '📋 Function Navigation',
         'data_transformation': '🔄 Data Transformation',
         'format_conversion': '📁 Format Conversion',
         'data_concat': '📈 Data Concatenation',
@@ -189,7 +188,6 @@ LANGUAGES = {
     },
     'zh': {
         'app_title': 'Smart Excel 数据处理工具',
-        'sidebar_header': '📋 功能导航',
         'data_transformation': '🔄 数据转换功能',
         'format_conversion': '📁 格式转换功能',
         'data_concat': '📈 数据拼接',
@@ -639,15 +637,15 @@ st.markdown('<div class="language-toggle">', unsafe_allow_html=True)
 if 'language' not in st.session_state:
     st.session_state.language = 'zh'  # Default to Chinese
 # Create language toggle buttons
-col1, col2 = st.columns(2)
-with col1:
-    if st.button('English' if st.session_state.language == 'zh' else '🇺🇸 English'):
-        st.session_state.language = 'en'
-        st.rerun()
-with col2:
-    if st.button('中文' if st.session_state.language == 'en' else '🇨🇳 中文'):
-        st.session_state.language = 'zh'
-        st.rerun()
+# col1, col2 = st.columns(2)
+# with col1:
+#     if st.button('English' if st.session_state.language == 'zh' else '🇺🇸 English'):
+#         st.session_state.language = 'en'
+#         st.rerun()
+# with col2:
+#     if st.button('中文' if st.session_state.language == 'en' else '🇨🇳 中文'):
+#         st.session_state.language = 'zh'
+#         st.rerun()
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Main title
@@ -689,7 +687,6 @@ def styled_button(label, function_key, use_container_width=True):
 
 # Sidebar with functional areas
 with st.sidebar:
-    st.markdown(f'<div class="sidebar-header">{_("sidebar_header")}</div>', unsafe_allow_html=True)
 
     # Data Transformation Functions
     st.markdown(f'<div class="sidebar-header">{_("data_transformation")}</div>', unsafe_allow_html=True)
@@ -720,7 +717,7 @@ with st.container():
         st.header(_("data_concat_header"))
 
         # Info section with collapsible description
-        with st.expander("ℹ️ " + _("Function Description - Click to View Details")):
+        with st.expander("ℹ️ " + _("功能描述 - 点击查看详情")):
             st.write(_("data_concat_desc"))
 
         # Initialize session state for this function
@@ -867,7 +864,7 @@ with st.container():
         st.header(_("data_join_header"))
 
         # Info section with collapsible description
-        with st.expander("ℹ️ " + _("Function Description - Click to View Details")):
+        with st.expander("ℹ️ " + _("功能描述 - 点击查看详情")):
             st.write(_("data_join_desc"))
 
         # Initialize session state for this function
@@ -982,7 +979,7 @@ with st.container():
         st.header(_("sheet_merge_header"))
 
         # Info section with collapsible description
-        with st.expander("ℹ️ " + _("Function Description - Click to View Details")):
+        with st.expander("ℹ️ " + _("功能描述 - 点击查看详情")):
             st.write(_("sheet_merge_desc"))
 
         # Initialize session state for this function
@@ -1070,7 +1067,7 @@ with st.container():
         st.header(_("sheet_split_header"))
 
         # Info section with collapsible description
-        with st.expander("ℹ️ " + _("Function Description - Click to View Details")):
+        with st.expander("ℹ️ " + _("功能描述 - 点击查看详情")):
             st.write(_("sheet_split_desc"))
 
         # Initialize session state for this function
@@ -1156,7 +1153,7 @@ with st.container():
         st.header(_("excel_to_csv_header"))
 
         # Info section with collapsible description
-        with st.expander("ℹ️ " + _("Function Description - Click to View Details")):
+        with st.expander("ℹ️ " + _("功能描述 - 点击查看详情")):
             st.write(_("excel_to_csv_desc"))
 
         # Initialize session state for this function
@@ -1247,7 +1244,7 @@ with st.container():
         st.header(_("csv_to_excel_header"))
 
         # Info section with collapsible description
-        with st.expander("ℹ️ " + _("Function Description - Click to View Details")):
+        with st.expander("ℹ️ " + _("功能描述 - 点击查看详情")):
             st.write(_("csv_to_excel_desc"))
 
         # Initialize session state for this function
@@ -1348,7 +1345,7 @@ with st.container():
         st.header(_("excel_to_pdf_header"))
 
         # Info section with collapsible description
-        with st.expander("ℹ️ " + _("Function Description - Click to View Details")):
+        with st.expander("ℹ️ " + _("功能描述 - 点击查看详情")):
             st.write(_("excel_to_pdf_desc"))
 
         # Initialize session state for this function
@@ -1474,7 +1471,7 @@ with st.container():
         st.header(_("pdf_to_excel_header"))
 
         # Info section with collapsible description
-        with st.expander("ℹ️ " + _("Function Description - Click to View Details")):
+        with st.expander("ℹ️ " + _("功能描述 - 点击查看详情")):
             st.write(_("pdf_to_excel_desc"))
 
         # Initialize session state for this function
