@@ -3,6 +3,11 @@ from openai import OpenAI
 import os
 import requests
 
+# Author: yuyun
+# Email: yuyunsunboy@163.com
+# wx: wchatyuyn
+# Last Modified: 2026-04-01
+
 # 定义一个函数，用于获取OpenAI客户端
 @st.cache_resource
 def get_openai_client(url, api_key):

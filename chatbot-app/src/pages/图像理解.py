@@ -5,6 +5,10 @@ import os, sys  # os 和 sys 用于与操作系统和系统参数交互。
 import base64  # base64 用于处理 Base64 编码
 import requests  # requests 用于发送 HTTP 请求
 
+# Author: yuyun
+# Email: yuyunsunboy@163.com
+# wx: wchatyuyn
+# Last Modified: 2026-04-08
 
 @st.cache_resource
 def get_openai_client(url, api_key):

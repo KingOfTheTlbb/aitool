@@ -4,6 +4,11 @@ import json
 from typing import Dict, List
 import time
 
+# Author: yuyun
+# Email: yuyunsunboy@163.com
+# wx: wchatyuyn
+# Last Modified: 2026-04-11
+
 @st.cache_resource
 def get_openai_client(url, api_key):
     # 使用了缓存，当参数不变时，不会重复创建client

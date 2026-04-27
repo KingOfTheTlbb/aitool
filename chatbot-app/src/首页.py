@@ -2,6 +2,11 @@ import os
 import streamlit as st
 import sys
 
+# Author: yuyun
+# Email: yuyunsunboy@163.com
+# wx: wchatyuyn
+# Last Modified: 2026-04-01
+
 def home():
     st.markdown("""
     <style>

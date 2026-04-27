@@ -1,6 +1,11 @@
 import streamlit as st
 from openai import OpenAI
 
+# Author: yuyun
+# Email: yuyunsunboy@163.com
+# wx: wchatyuyn
+# Last Modified: 2026-04-07
+
 # 定义一个函数，用于创建 TTS 页面。
 def tts_page():
     # 设置页面标题。

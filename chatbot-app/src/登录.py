@@ -5,6 +5,11 @@ from sqlalchemy.exc import NoResultFound
 import os
 import sys
 
+# Author: yuyun
+# Email: yuyunsunboy@163.com
+# wx: wchatyuyn
+# Last Modified: 2026-04-02
+
 # 数据库配置
 DATABASE_URL = "mysql+pymysql://root:123456@localhost:3306/aichat?charset=utf8mb4"
 engine = create_engine(DATABASE_URL)

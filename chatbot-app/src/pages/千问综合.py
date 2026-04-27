@@ -5,6 +5,11 @@ import os
 import base64
 from io import BytesIO
 
+# Author: yuyun
+# Email: yuyunsunboy@163.com
+# wx: wchatyuyn
+# Last Modified: 2026-04-04
+
 # 初始化DashScope
 dashscope.api_key = os.getenv('DASHSCOPE_API_KEY', 'sk-56c2dff09b054decb4014c93230587b0')
 

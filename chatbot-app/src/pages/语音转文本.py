@@ -4,6 +4,11 @@ from openai import OpenAI
 from io import BytesIO
 import os, sys, json
 
+# Author: yuyun
+# Email: yuyunsunboy@163.com
+# wx: wchatyuyn
+# Last Modified: 2026-04-04
+
 # 定义语音转文字页面
 def stt_page():
     st.title("语音转文本")

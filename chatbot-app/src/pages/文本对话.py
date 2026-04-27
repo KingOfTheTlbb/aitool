@@ -6,6 +6,10 @@ import streamlit as st
 import tiktoken
 from openai import OpenAI
 
+# Author: yuyun
+# Email: yuyunsunboy@163.com
+# wx: wchatyuyn
+# Last Modified: 2026-04-09
 
 # 聊天页面
 def chat_page():

@@ -12,6 +12,11 @@ from matplotlib.backends.backend_pdf import PdfPages
 import seaborn as sns
 import matplotlib.font_manager as fm
 
+# Author: yuyun
+# Email: yuyunsunboy@163.com
+# wx: wchatyuyn
+# Last Modified: 2026-04-12
+
 # Language dictionary
 LANGUAGES = {
     'en': {

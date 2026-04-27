@@ -2,6 +2,11 @@ import streamlit as st
 from openai import OpenAI
 import time
 
+# Author: yuyun
+# Email: yuyunsunboy@163.com
+# wx: wchatyuyn
+# Last Modified: 2026-04-10
+
 # 设置页面配置
 st.set_page_config(
     page_title="AI智能公文生成器",

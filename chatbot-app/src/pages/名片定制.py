@@ -6,6 +6,11 @@ from openai import OpenAI
 import requests
 from io import BytesIO
 
+# Author: yuyun
+# Email: yuyunsunboy@163.com
+# wx: wchatyuyn
+# Last Modified: 2026-04-08
+
 def ensure_chinese_font():
     """确保中文字体存在，如果不存在则自动下载"""
     font_dir = os.path.join(os.path.dirname(__file__), "fonts")

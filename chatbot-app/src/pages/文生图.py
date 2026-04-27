@@ -1,6 +1,10 @@
 from openai import OpenAI
 import streamlit as st
 
+# Author: yuyun
+# Email: yuyunsunboy@163.com
+# wx: wchatyuyn
+# Last Modified: 2026-04-07
 
 @st.cache_resource
 def get_openai_client(url, api_key):
